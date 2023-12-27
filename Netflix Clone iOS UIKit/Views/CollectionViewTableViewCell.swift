@@ -1,11 +1,17 @@
 
 import UIKit
 
+protocol CollectionViewTableViewCellDelegate: AnyObject {
+    func collectionViewTableViewCellDidTapCell(_ cell: CollectionViewTableViewCell, viewModel: ContentPreviewViewModel)
+}
+
 class CollectionViewTableViewCell: UITableViewCell {
 
     static let identifier = "CollectionViewTableViewCell"
     
     private var contents: [Content] = []
+    
+    weak var delegate: CollectionViewTableViewCellDelegate?
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -65,10 +71,16 @@ extension CollectionViewTableViewCell: UICollectionViewDelegate, UICollectionVie
             return
         }
         
-        APIManager.shared.getMovie(for: contentName + " trailer") { result in
+        APIManager.shared.getMovie(for: contentName + " trailer") { [weak self] result in
             switch result {
             case .success(let videoElement):
-                print(videoElement.id)
+                let viewModel = ContentPreviewViewModel(
+                    title: contentName,
+                    overview: self?.contents[indexPath.row].overview ?? "",
+                    youtubeVideo: videoElement
+                )
+                guard let strongSelf = self else { return }
+                self?.delegate?.collectionViewTableViewCellDidTapCell(strongSelf, viewModel: viewModel)
             case .failure(let error):
                 print(error)
             }

@@ -24,6 +24,8 @@
 		D72970F82B3C2C9600A50A22 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72970F72B3C2C9600A50A22 /* ContentViewModel.swift */; };
 		D72970FA2B3C39EF00A50A22 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72970F92B3C39EF00A50A22 /* SearchResultsViewController.swift */; };
 		D72970FE2B3C484700A50A22 /* YoutubeSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72970FD2B3C484700A50A22 /* YoutubeSearchResponse.swift */; };
+		D72971002B3C4C2200A50A22 /* ContentPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72970FF2B3C4C2200A50A22 /* ContentPreviewViewController.swift */; };
+		D72971022B3C4F2300A50A22 /* ContentPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72971012B3C4F2300A50A22 /* ContentPreviewViewModel.swift */; };
 		D73A55C82B3C0A9600EB0845 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73A55C72B3C0A9600EB0845 /* AppDelegate.swift */; };
 		D73A55CA2B3C0A9600EB0845 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73A55C92B3C0A9600EB0845 /* SceneDelegate.swift */; };
 		D73A55D12B3C0A9A00EB0845 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D73A55D02B3C0A9A00EB0845 /* Assets.xcassets */; };
@@ -46,6 +48,8 @@
 		D72970F72B3C2C9600A50A22 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		D72970F92B3C39EF00A50A22 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		D72970FD2B3C484700A50A22 /* YoutubeSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchResponse.swift; sourceTree = "<group>"; };
+		D72970FF2B3C4C2200A50A22 /* ContentPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPreviewViewController.swift; sourceTree = "<group>"; };
+		D72971012B3C4F2300A50A22 /* ContentPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPreviewViewModel.swift; sourceTree = "<group>"; };
 		D73A55C42B3C0A9600EB0845 /* Netflix Clone iOS UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Netflix Clone iOS UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D73A55C72B3C0A9600EB0845 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D73A55C92B3C0A9600EB0845 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				D72970F72B3C2C9600A50A22 /* ContentViewModel.swift */,
+				D72971012B3C4F2300A50A22 /* ContentPreviewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				D72970F92B3C39EF00A50A22 /* SearchResultsViewController.swift */,
+				D72970FF2B3C4C2200A50A22 /* ContentPreviewViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 				D72970DA2B3C0F6400A50A22 /* HomeViewController.swift in Sources */,
 				D72970EC2B3C1E7700A50A22 /* ContentCollectionViewCell.swift in Sources */,
 				D72970D72B3C0F2300A50A22 /* HeroHeaderUIView.swift in Sources */,
+				D72971022B3C4F2300A50A22 /* ContentPreviewViewModel.swift in Sources */,
 				D72970DC2B3C0F7D00A50A22 /* DownloadsViewController.swift in Sources */,
 				D72970E42B3C0FD900A50A22 /* Extensions.swift in Sources */,
 				D72970EA2B3C124C00A50A22 /* MainTabBarViewController.swift in Sources */,
@@ -264,6 +271,7 @@
 				D72970D02B3C0EC300A50A22 /* Content.swift in Sources */,
 				D72970FE2B3C484700A50A22 /* YoutubeSearchResponse.swift in Sources */,
 				D73A55CA2B3C0A9600EB0845 /* SceneDelegate.swift in Sources */,
+				D72971002B3C4C2200A50A22 /* ContentPreviewViewController.swift in Sources */,
 				D72970F62B3C2A2F00A50A22 /* ContentTableViewCell.swift in Sources */,
 				D72970E72B3C0FF700A50A22 /* APIManager.swift in Sources */,
 				D72970E12B3C0FB400A50A22 /* UpcomingViewController.swift in Sources */,
