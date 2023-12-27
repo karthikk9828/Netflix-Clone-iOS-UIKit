@@ -1,14 +1,22 @@
 
 import UIKit
 
+enum Sections: Int {
+    case TrendingMovies = 0
+    case TrendingSeries = 1
+    case PopularMovies = 2
+    case UpcomingMovies = 3
+    case TopRatedMovies = 4
+}
+
 class HomeViewController: UIViewController {
     
     let sectionTitles: [String] = [
         "Trending Movies",
         "Trending Series",
-        "Popular",
+        "Popular Movies",
         "Upcoming Movies",
-        "Top Rated",
+        "Top Rated Movies",
     ]
     
     private let homeFeedTable: UITableView = {
@@ -28,10 +36,8 @@ class HomeViewController: UIViewController {
         configureNavigationBar()
         
         let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
-
-        homeFeedTable.tableHeaderView = headerView
         
-        getTrendingMovies()
+        homeFeedTable.tableHeaderView = headerView
     }
     
     private func configureNavigationBar() {
@@ -50,36 +56,6 @@ class HomeViewController: UIViewController {
         super.viewDidLayoutSubviews()
         homeFeedTable.frame = view.bounds
     }
-    
-    private func getTrendingMovies() {
-//        APIManager.shared.getTrendingMovies { result in
-//            switch result {
-//            case .success(let movies):
-//                print(movies)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-        
-//        APIManager.shared.getTrendingSeries { result in
-//                        switch result {
-//                        case .success(let movies):
-//                            print(movies)
-//                        case .failure(let error):
-//                            print(error)
-//                        }
-//                    }
-        
-        APIManager.shared.getUpcomingMovies { result in
-                        switch result {
-                        case .success(let movies):
-                            print(movies)
-                        case .failure(let error):
-                            print(error)
-                        }
-                    }
-        
-    }
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -94,6 +70,56 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        switch indexPath.section {
+        case Sections.TrendingMovies.rawValue:
+            APIManager.shared.getTrendingMovies { result in
+                switch result {
+                case .success(let contents):
+                    cell.configure(with: contents)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        case Sections.TrendingSeries.rawValue:
+            APIManager.shared.getTrendingSeries { result in
+                switch result {
+                case .success(let contents):
+                    cell.configure(with: contents)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        case Sections.PopularMovies.rawValue:
+            APIManager.shared.getPopularMovies { result in
+                switch result {
+                case .success(let contents):
+                    cell.configure(with: contents)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        case Sections.UpcomingMovies.rawValue:
+            APIManager.shared.getUpcomingMovies { result in
+                switch result {
+                case .success(let contents):
+                    cell.configure(with: contents)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        case Sections.TopRatedMovies.rawValue:
+            APIManager.shared.getTopRatedMovies { result in
+                switch result {
+                case .success(let contents):
+                    cell.configure(with: contents)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        default:
             return UITableViewCell()
         }
         
