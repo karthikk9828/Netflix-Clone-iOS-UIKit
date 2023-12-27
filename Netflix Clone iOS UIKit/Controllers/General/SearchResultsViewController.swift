@@ -1,9 +1,15 @@
 
 import UIKit
 
+protocol SearchResultsViewControllerDelegate: AnyObject {
+    func searchResultsViewControllerDidTapItem(_ viewModel: ContentPreviewViewModel)
+}
+
 class SearchResultsViewController: UIViewController {
     
     var contents: [Content] = []
+    
+    public weak var delegate: SearchResultsViewControllerDelegate?
     
     let searchResultsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -40,5 +46,29 @@ extension SearchResultsViewController: UICollectionViewDelegate, UICollectionVie
         }
         cell.configure(with: contents[indexPath.row].posterPath ?? "")
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let content = contents[indexPath.row]
+        guard let contentName = content.originalTitle ?? content.originalName else {
+            return
+        }
+        
+        APIManager.shared.getMovie(for: contentName + " trailer") { [weak self] result in
+            switch result {
+            case .success(let videoElement):
+                let viewModel = ContentPreviewViewModel(
+                    title: contentName,
+                    overview: content.overview ?? "",
+                    youtubeVideo: videoElement
+                )
+                                
+                self?.delegate?.searchResultsViewControllerDidTapItem(viewModel)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }

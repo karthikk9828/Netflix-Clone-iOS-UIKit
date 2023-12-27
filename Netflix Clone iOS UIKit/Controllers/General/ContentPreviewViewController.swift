@@ -48,13 +48,15 @@ class ContentPreviewViewController: UIViewController {
         view.addSubview(overviewLabel)
         view.addSubview(downloadButton)
         
+        navigationController?.navigationBar.tintColor = .white
+        
         applyConstraints()
     }
     
     private func applyConstraints() {
         let webViewConstraints = [
             webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            webView.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
+            webView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
             webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             webView.heightAnchor.constraint(equalToConstant: 300)
         ]
@@ -88,12 +90,9 @@ class ContentPreviewViewController: UIViewController {
         overviewLabel.text = viewModel.overview
         
         guard let url = URL(string: "https://www.youtube.com/embed/\(viewModel.youtubeVideo.id.videoId)") else {
-            print("could not do url")
             return
         }
-        
-        print("did url")
-        
+                
         webView.load(URLRequest(url: url))
     }
 }

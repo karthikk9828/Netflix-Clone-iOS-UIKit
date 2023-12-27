@@ -14,5 +14,5 @@ struct Content : Codable {
     let overview: String?
     let voteCount: Int
     let voteAverage: Double
-    let releaseData: String?
+    let releaseDate: String?
 }
