@@ -36,8 +36,11 @@ class HomeViewController: UIViewController {
         configureNavigationBar()
         
         let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
-        
         homeFeedTable.tableHeaderView = headerView
+        
+        APIManager.shared.getMovie(for: "John Wick") { _ in
+            
+        }
     }
     
     private func configureNavigationBar() {
