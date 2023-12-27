@@ -1,4 +1,3 @@
-
 import UIKit
 
 class MainTabBarViewController: UITabBarController {
@@ -28,4 +27,3 @@ class MainTabBarViewController: UITabBarController {
         setViewControllers([homeVC, upcomingVC, searchVC, downloadsVC], animated: true)
     }
 }
-
